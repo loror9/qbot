@@ -1,7 +1,7 @@
 import { CommandContext } from '../../structures/addons/CommandAddons';
 import { Command } from '../../structures/Command';
 import { config } from '../../config';
-import { robloxClient, getClient } from '../../main';
+import { robloxClient, discordClient } from '../../main';
 import { getRoleListEmbed, getInvalidRobloxGroupEmbed } from '../../handlers/locale';
 import { Group as RobloxGroup } from 'bloxy/dist/structures';
 
