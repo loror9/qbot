@@ -23,9 +23,9 @@ const config: BotConfig = {
     },
 
     verificationChecks: {
-        enabled: false,
+        enabled: true,
         bypassRoleIds: [],
-        bloxlinkGuildId: '',
+        bloxlinkGuildId: '1214970557192343552',
     },
 
     antiAbuse: {
