@@ -7,9 +7,9 @@ const config: BotConfig = {
     status: 'online',
 
     activity: {
-        enabled: false,
+        enabled: true,
         type: ActivityType.Watching,
-        value: 'for commands.',
+        value: 'over The State of Absaroka',
     },
 
     legacyCommands: {
@@ -18,8 +18,8 @@ const config: BotConfig = {
     },
 
     logChannels: {
-        actions: '',
-        shout: '',
+        actions: '1223319361012629687',
+        shout: '1223319361012629687',
     },
 
     verificationChecks: {
