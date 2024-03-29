@@ -71,17 +71,17 @@ const config: BotConfig = {
             /**
              * The name of the group, to be uniquely identified by.
              */
-            name: "Official Group of Roblox",
+            name: "State of Absaroka",
 
             /**
              * The Roblox ID of the group.
              */
-            groupId: 1200769,
+            groupId: 8559135,
 
             /**
              * What rank should be the maximum that can be ranked by your bot? 
             */
-            maximumRank: 255,
+            maximumRank: 10,
 
             /**
              * What rank should be the maximum that can be ranked by your bot? 
@@ -92,13 +92,13 @@ const config: BotConfig = {
              * What rank should users be ranked to when they are fired?
              * @default 1
              */
-            firedRank: 1,
+            firedRank: 2,
 
             /**
              * What role should users be placed at if they are suspended?
              * @default 1
              */
-            suspendedRank: 1,
+            suspendedRank: 2,
 
             /**
              * Should the bot delete URLs in your group wall?
@@ -113,11 +113,11 @@ const config: BotConfig = {
                 /**
                  * Access to all commands. Please be careful with this.
                  */
-                all: [],
+                all: ['1222655511925620776'],
                 /**
                  * Access to the promote, demote, setrank, and fire commands.
                  */
-                ranking: [],
+                ranking: ['1222969972100169728'],
                 /**
                  * Access to the info, add-xp, remove-xp, and xp-rankup commands.
                  */
@@ -125,7 +125,7 @@ const config: BotConfig = {
                 /**
                  * Access to the shout command.
                  */
-                shout: [],
+                shout: ['1222969972100169728'],
                 /**
                  * Access to the join-requests, accept-join, and deny-join commands.
                  */
