@@ -3,7 +3,7 @@ import { BotConfig } from './structures/types';
 
 const config: BotConfig = {
     slashCommands: true,
-    api: false,
+    api: true,
     status: 'online',
 
     activity: {
