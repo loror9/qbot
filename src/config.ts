@@ -39,7 +39,7 @@ const config: BotConfig = {
         /**
          * Access to all commands. Please be careful with this.
          */
-        all: [],
+        all: ['1222655511925620776'],
         /**
          * Access to the promote, demote, setrank, and fire commands.
          */
