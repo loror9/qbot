@@ -332,5 +332,5 @@ if(config.api) {
     });
 }
 
-app.listen(process.env.PORT || 3001);
+app.listen(process.env.PORT || 3002);
 export { addSignal };
