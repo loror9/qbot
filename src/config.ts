@@ -2,14 +2,14 @@ import { ActivityType } from 'discord.js';
 import { BotConfig } from './structures/types'; 
 
 export const config: BotConfig = {
-    groupId: 0,
+    groupId: 4544444,
     slashCommands: true,
     legacyCommands: {
         enabled: true,
         prefixes: ['q!'],
     },
     permissions: {
-        all: [''],
+        all: ['516653832978169856'],
         ranking: [''],
         users: [''],
         shout: [''],
@@ -22,7 +22,7 @@ export const config: BotConfig = {
         shout: '',
     },
     api: false,
-    maximumRank: 255,
+    maximumRank: 5,
     verificationChecks: false,
     bloxlinkGuildId: '',
     firedRank: 1,
@@ -46,9 +46,9 @@ export const config: BotConfig = {
         demotionRank: 1,
     },
     activity: {
-        enabled: false,
+        enabled: true,
         type: ActivityType.Watching,
-        value: 'for commands.',
+        value: 'loror',
     },
     status: 'online',
     deleteWallURLs: false,
