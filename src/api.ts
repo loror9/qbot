@@ -154,7 +154,8 @@ if (config.api) {
         try {
             const robloxGroup = await robloxClient.getGroup(Number(groupId));
             const robloxMember = await robloxGroup.getMember(Number(id));
-            const hrUser = await robloxGroup.getMember(Number(adminId));
+            const robloxUser = await robloxClient.getUser(Number(id));
+            const hrUser = await robloxClient.getUser(Number(adminId));
 
             if (!robloxMember) throw new Error();
             if (!hrUser) throw new Error();
