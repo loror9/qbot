@@ -39,23 +39,23 @@ const config: BotConfig = {
         /**
          * Access to all commands. Please be careful with this.
          */
-        all: ['1222655511925620776'],
+        all: ['1222655511925620776','1233085243741831248'],
         /**
          * Access to the promote, demote, setrank, and fire commands.
          */
-        ranking: [],
+        ranking: ['1233085464806948964'],
         /**
          * Access to the info, add-xp, remove-xp, and xp-rankup commands.
          */
-        users: [],
+        users: ['1233085502492774470'],
         /**
          * Access to the shout command.
          */
-        shout: [],
+        shout: ['1233085543735099524'],
         /**
          * Access to the join-requests, accept-join, and deny-join commands.
          */
-        join: [],
+        join: ['1233085583979450488'],
         /**
          * Access to the signal command.
          */
@@ -63,7 +63,7 @@ const config: BotConfig = {
         /**
          * Access to the revert-ranks, exile, groupban, and ungroupban command.
          */
-        admin: []
+        admin: ['1233085643530440866']
     },
 
     groups: [
@@ -99,6 +99,116 @@ const config: BotConfig = {
              * @default 1
              */
             suspendedRank: 2,
+
+            /**
+             * Should the bot delete URLs in your group wall?
+             * @default false
+             */
+            deleteWallURLs: true,
+
+            /**
+            * IDs of roles that have permission to do various things.
+            */
+            permissions: {
+                /**
+                 * Access to all commands. Please be careful with this.
+                 */
+                all: ['1222655511925620776'],
+                /**
+                 * Access to the promote, demote, setrank, and fire commands.
+                 */
+                ranking: ['1222969972100169728'],
+                /**
+                 * Access to the info, add-xp, remove-xp, and xp-rankup commands.
+                 */
+                users: [],
+                /**
+                 * Access to the shout command.
+                 */
+                shout: ['1222969972100169728'],
+                /**
+                 * Access to the join-requests, accept-join, and deny-join commands.
+                 */
+                join: [],
+                /**
+                 * Access to the signal command.
+                 */
+                signal: [],
+                /**
+                 * Access to the revert-ranks, exile, groupban, and ungroupban command.
+                 */
+                admin: []
+            },
+
+            memberCount: {
+                /**
+                 * Is this feature enabled?
+                 */
+                enabled: false,
+                /**
+                 * What channel should the member count be announced in when it changes?
+                 */
+                channelId: "DISCORD_CHANNEL_ID", //
+                /**
+                 * Multiples of this number will be considered milestones.
+                 */
+                milestone: 1000,
+                /**
+                 * Should the bot log member counts that are not milestones?
+                 */
+                onlyMilestones: true
+            },
+
+            /**
+             * Configuration for the XP system.
+            */
+            xpSystem: {
+                /**
+                 * Should the XP system be enabled?
+                 */
+                enabled: false,
+                /**
+                 * Should users be ranked up if they meet requirements after their XP is changed through commands?
+                 */
+                autoRankup: false,
+                /**
+                 * Roles that users can rank up to.
+                 */
+                roles: []
+            }
+        },
+        {
+            /**
+             * The name of the group, to be uniquely identified by.
+             */
+            name: "Absaroka State Police",
+
+            /**
+             * The Roblox ID of the group.
+             */
+            groupId: 8559137,
+
+            /**
+             * What rank should be the maximum that can be ranked by your bot? 
+            */
+            maximumRank: 10,
+
+            /**
+             * What rank should be the maximum that can be ranked by your bot? 
+            */
+            recordManualActions: true,
+
+            /**
+             * What rank should users be ranked to when they are fired?
+             * @default 1
+             */
+            firedRank: 1,
+
+            /**
+             * What role should users be placed at if they are suspended?
+             * @default 1
+             */
+            suspendedRank: 1,
 
             /**
              * Should the bot delete URLs in your group wall?
