@@ -420,6 +420,7 @@ export const getLogEmbed = async (robloxGroup: RobloxGroup|boolean, action: stri
         .setTimestamp()
         .setDescription(`**Action:** ${action}\n${target ? `**Target:** ${target.name} (${target.id})\n` : ''}${rankChange ? `**Rank Change:** ${rankChange}\n` : ''}${xpChange ? `**XP Change:** ${xpChange}\n` : ''}${endDate ? `**Duration:** <t:${Math.round(endDate.getTime() / 1000)}:R>\n` : ''}${typeof robloxGroup === "boolean" ? '' : `**Group:** ${robloxGroup.name}\n`}${reason ? `**Reason:** ${reason}\n` : ''}${body ? `**Body:** ${body}\n` : ''}`);
 
+    console.log('moderator:', moderator, typeof moderator);
     if (typeof moderator === 'string') {
         embed.setAuthor({ name: moderator });
     } else {
