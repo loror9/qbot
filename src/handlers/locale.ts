@@ -427,7 +427,7 @@ export const getLogEmbed = async (robloxGroup: RobloxGroup|boolean, action: stri
             embed.setAuthor({ name: moderator.username, iconURL: moderator.displayAvatarURL() });
             embed.setFooter({ text: `Moderator ID: ${moderator.id}` });
         } else {
-            embed.setAuthor({ name: moderator.username });
+            embed.setAuthor({ name: moderator.name });
             embed.setThumbnail((await getHeadshotImage(target.id)).imageUrl)
         }
     }
