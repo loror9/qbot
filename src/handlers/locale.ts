@@ -428,7 +428,12 @@ export const getLogEmbed = async (robloxGroup: RobloxGroup|boolean, action: stri
             embed.setFooter({ text: `Moderator ID: ${moderator.id}` });
         } else {
             embed.setAuthor({ name: moderator.name });
-            embed.setThumbnail((await getHeadshotImage(target.id)).imageUrl)
+            if (target && target.id) {
+                const headshotImage = await getHeadshotImage(target.id);
+                if (headshotImage && headshotImage.imageUrl) {
+                    embed.setThumbnail(headshotImage.imageUrl);
+                }
+            }
         }
     }
 
