@@ -164,7 +164,7 @@ if (config.api) {
 
             if (!role) throw new Error();
             await robloxGroup.updateMember(Number(id), role.id);
-            logAction(robloxGroup, 'Promote', hrMember.name, robloxMember.name, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
+            logAction(robloxGroup, 'Promote', hrMember, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
             return res.send({ success: true });
         } catch (err) {
             return res.send({ success: false, msg: 'Failed to rank.' });
@@ -193,7 +193,7 @@ if (config.api) {
 
             if (!role) throw new Error();
             await robloxGroup.updateMember(Number(id), role.id);
-            logAction(robloxGroup, 'Demote', hrMember.name, robloxMember.name, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
+            logAction(robloxGroup, 'Demote', hrMember, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
             return res.send({ success: true });
         } catch (err) {
             return res.send({ success: false, msg: 'Failed to rank.' });
@@ -222,7 +222,7 @@ if (config.api) {
 
             if (!role) throw new Error();
             await robloxGroup.updateMember(Number(id), role.id);
-            logAction(robloxGroup, 'Fire', hrMember.name, robloxMember.name, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
+            logAction(robloxGroup, 'Fire', hrMember, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
             return res.send({ success: true });
         } catch (err) {
             return res.send({ success: false, msg: 'Failed to rank.' });
@@ -251,7 +251,7 @@ if (config.api) {
 
             if (!newRole) throw new Error();
             await robloxGroup.updateMember(Number(id), newRole.id);
-            logAction(robloxGroup, 'Set Rank', hrMember.name, robloxMember.name, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${newRole.name} (${newRole.rank})`);
+            logAction(robloxGroup, 'Set Rank', hrMember, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${newRole.name} (${newRole.rank})`);
             return res.send({ success: true });
         } catch (err) {
             return res.send({ success: false, msg: 'Failed to rank.' });
@@ -288,7 +288,7 @@ if (config.api) {
             const endDate = new Date();
             endDate.setMilliseconds(endDate.getMilliseconds() + durationInMs);
 
-            logAction(robloxGroup, 'Suspend', hrMember.name, robloxMember.name, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`, endDate);
+            logAction(robloxGroup, 'Suspend', hrMember, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`, endDate);
             await provider.updateUserSuspension(robloxMember.id.toString(), Number(groupId), { suspendedUntil: endDate, unsuspendRank: robloxMember.role.id });
 
             return res.send({ success: true });
@@ -320,7 +320,7 @@ if (config.api) {
             const role = groupRoles.find((role) => role.rank === userData.unsuspendRank);
             if (!role) throw new Error();
 
-            logAction(robloxGroup, 'Unsuspend', hrMember.name, robloxMember.name, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
+            logAction(robloxGroup, 'Unsuspend', hrMember, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
             await provider.updateUserSuspension(robloxMember.id.toString(), Number(groupId), { suspendedUntil: null, unsuspendRank: null });
 
             return res.send({ success: true });
