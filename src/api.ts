@@ -154,9 +154,10 @@ if (config.api) {
         try {
             const robloxGroup = await robloxClient.getGroup(Number(groupId));
             const robloxMember = await robloxGroup.getMember(Number(id));
-            const hrMember = await robloxGroup.getMember(Number(adminId));
+            const hrUser = await robloxGroup.getMember(Number(adminId));
 
             if (!robloxMember) throw new Error();
+            if (!hrUser) throw new Error();
 
             const groupRoles = await robloxGroup.getRoles();
             const currentRoleIndex = groupRoles.findIndex((role) => role.rank === robloxMember.role.rank);
@@ -164,7 +165,7 @@ if (config.api) {
 
             if (!role) throw new Error();
             await robloxGroup.updateMember(Number(id), role.id);
-            logAction(robloxGroup, 'Promote', hrMember.name, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
+            logAction(robloxGroup, 'Promote', hrUser, reason, robloxUser, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
             return res.send({ success: true });
         } catch (err) {
             return res.send({ success: false, msg: 'Failed to rank.' });
@@ -183,10 +184,11 @@ if (config.api) {
         try {
             const robloxGroup = await robloxClient.getGroup(Number(groupId));
             const robloxMember = await robloxGroup.getMember(Number(id));
-            const hrMember = await robloxClient.getUser(Number(adminId));
+            const robloxUser = await robloxClient.getUser(Number(id));
+            const hrUser = await robloxClient.getUser(Number(adminId));
 
             if (!robloxMember) throw new Error();
-            if (!hrMember) throw new Error();
+            if (!hrUser) throw new Error();
 
             const groupRoles = await robloxGroup.getRoles();
             const currentRoleIndex = groupRoles.findIndex((role) => role.rank === robloxMember.role.rank);
@@ -195,8 +197,8 @@ if (config.api) {
             if (!role) throw new Error();
             await robloxGroup.updateMember(Number(id), role.id);
             console.log(adminId)
-            console.log(hrMember.name)
-            logAction(robloxGroup, 'Demote', hrMember.name, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
+            console.log(hrUser.name)
+            logAction(robloxGroup, 'Demote', hrUser, reason, robloxUser, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
             return res.send({ success: true });
         } catch (err) {
             return res.send({ success: false, msg: 'Failed to rank.' });
@@ -215,17 +217,20 @@ if (config.api) {
         try {
             const robloxGroup = await robloxClient.getGroup(Number(groupId));
             const robloxMember = await robloxGroup.getMember(Number(id));
-            const hrMember = await robloxGroup.getMember(Number(adminId));
-            const groupConfig = await findGroupById(robloxGroup.id);
+            const robloxUser = await robloxClient.getUser(Number(id));
+            const hrUser = await robloxClient.getUser(Number(adminId));
             
             if (!robloxMember) throw new Error();
+            if (!hrUser) throw new Error();
+
+            const groupConfig = await findGroupById(robloxGroup.id);
 
             const groupRoles = await robloxGroup.getRoles();
             const role = groupRoles.find((role) => role.rank === groupConfig.firedRank);
 
             if (!role) throw new Error();
             await robloxGroup.updateMember(Number(id), role.id);
-            logAction(robloxGroup, 'Fire', hrMember.name, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
+            logAction(robloxGroup, 'Fire', hrUser, reason, robloxUser, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
             return res.send({ success: true });
         } catch (err) {
             return res.send({ success: false, msg: 'Failed to rank.' });
@@ -245,16 +250,18 @@ if (config.api) {
         try {
             const robloxGroup = await robloxClient.getGroup(Number(groupId));
             const robloxMember = await robloxGroup.getMember(Number(id));
-            const hrMember = await robloxGroup.getMember(Number(adminId));
+            const robloxUser = await robloxClient.getUser(Number(id));
+            const hrUser = await robloxClient.getUser(Number(adminId));
 
             if (!robloxMember) throw new Error();
+            if (!hrUser) throw new Error();
 
             const groupRoles = await robloxGroup.getRoles();
             const newRole = groupRoles.find((r) => Number(role) === r.rank || Number(role) === r.id || String(role).toLowerCase() === r.name.toLowerCase());
 
             if (!newRole) throw new Error();
             await robloxGroup.updateMember(Number(id), newRole.id);
-            logAction(robloxGroup, 'Set Rank', hrMember.name, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${newRole.name} (${newRole.rank})`);
+            logAction(robloxGroup, 'Set Rank', hrUser, reason, robloxUser, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${newRole.name} (${newRole.rank})`);
             return res.send({ success: true });
         } catch (err) {
             return res.send({ success: false, msg: 'Failed to rank.' });
@@ -273,9 +280,12 @@ if (config.api) {
         try {
             const robloxGroup = await robloxClient.getGroup(Number(groupId));
             const robloxMember = await robloxGroup.getMember(Number(id));
-            const hrMember = await robloxGroup.getMember(Number(adminId));
+            const robloxUser = await robloxClient.getUser(Number(id));
+            const hrUser = await robloxClient.getUser(Number(adminId));
             const groupConfig = await findGroupById(robloxGroup.id);
+            
             if (!robloxMember) throw new Error();
+            if (!hrUser) throw new Error();
 
             const groupRoles = await robloxGroup.getRoles();
             const role = groupRoles.find((role) => role.rank === groupConfig.suspendedRank);
@@ -291,7 +301,7 @@ if (config.api) {
             const endDate = new Date();
             endDate.setMilliseconds(endDate.getMilliseconds() + durationInMs);
 
-            logAction(robloxGroup, 'Suspend', hrMember.name, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`, endDate);
+            logAction(robloxGroup, 'Suspend', hrUser, reason, robloxUser, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`, endDate);
             await provider.updateUserSuspension(robloxMember.id.toString(), Number(groupId), { suspendedUntil: endDate, unsuspendRank: robloxMember.role.id });
 
             return res.send({ success: true });
@@ -312,8 +322,11 @@ if (config.api) {
         try {
             const robloxGroup = await robloxClient.getGroup(Number(groupId));
             const robloxMember = await robloxGroup.getMember(Number(id));
-            const hrMember = await robloxGroup.getMember(Number(adminId));
+            const robloxUser = await robloxClient.getUser(Number(id));
+            const hrUser = await robloxClient.getUser(Number(adminId));
+            
             if (!robloxMember) throw new Error();
+            if (!hrUser) throw new Error();
 
             const userData = await provider.findSuspendedUser(robloxMember.id.toString(), Number(groupId));
             if (!userData.suspendedUntil) throw new Error();
@@ -323,7 +336,7 @@ if (config.api) {
             const role = groupRoles.find((role) => role.rank === userData.unsuspendRank);
             if (!role) throw new Error();
 
-            logAction(robloxGroup, 'Unsuspend', hrMember.name, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
+            logAction(robloxGroup, 'Unsuspend', hrUser, reason, robloxUser, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
             await provider.updateUserSuspension(robloxMember.id.toString(), Number(groupId), { suspendedUntil: null, unsuspendRank: null });
 
             return res.send({ success: true });
