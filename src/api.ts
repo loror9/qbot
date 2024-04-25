@@ -194,7 +194,6 @@ if (config.api) {
             if (!role) throw new Error();
             await robloxGroup.updateMember(Number(id), role.id);
             console.log(hrMember.name)
-            console.log(hrMember.username)
             logAction(robloxGroup, 'Demote', hrMember.name, reason, robloxMember, `${robloxMember.role.name} (${robloxMember.role.rank}) → ${role.name} (${role.rank})`);
             return res.send({ success: true });
         } catch (err) {
