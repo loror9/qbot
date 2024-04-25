@@ -183,7 +183,7 @@ if (config.api) {
         try {
             const robloxGroup = await robloxClient.getGroup(Number(groupId));
             const robloxMember = await robloxGroup.getMember(Number(id));
-            const hrMember = await robloxGroup.getMember(Number(adminId));
+            const hrMember = await robloxClient.getUserById(Number(adminId));
 
             if (!robloxMember) throw new Error();
             if (!hrMember) throw new Error();
