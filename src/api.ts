@@ -186,6 +186,7 @@ if (config.api) {
             const hrMember = await robloxGroup.getMember(Number(adminId));
 
             if (!robloxMember) throw new Error();
+            if (!hrMember) throw new Error();
 
             const groupRoles = await robloxGroup.getRoles();
             const currentRoleIndex = groupRoles.findIndex((role) => role.rank === robloxMember.role.rank);
